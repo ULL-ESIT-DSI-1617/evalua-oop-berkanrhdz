@@ -60,12 +60,6 @@ class RTextCell extends TextCell {
   }
 
   draw (width, height) {
-    var result = [];
-    for (var i = 0; i < height; i++) {
-      var line = this.text[i] || "";
-      result.push(" ".repeat(width - line.length) + line);
-    }
-    return result;
-  }
+    return super.draw()
 // End RTextCell
 }
