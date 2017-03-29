@@ -30,4 +30,4 @@ class UnderlinedCell {
     .concat(["-".repeat(width)]);
   }
 // End UnderlinedCell
-};
+}

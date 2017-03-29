@@ -1,40 +1,44 @@
 // TextCell Class
-function TextCell(text) {
-  this.text = text.split("\n");
-}
-/*
-  minWidth() returns a number indicating this cell’s minimum width
-  (in characters).
-*/
-TextCell.prototype.minWidth = function() {
+class TextCell {
+  constructor(text) {
+    this.text = text.split("\n");
+  }
+
   /*
-    The reduce() method applies a function against an accumulator and
-    each element in the array (from left to right) to reduce it to a
-    single value.
+    minWidth() returns a number indicating this cell’s minimum width
+    (in characters).
   */
-  return this.text.reduce(function(width, line) {
+  minWidth () {
+    /*
+      The reduce() method applies a function against an accumulator and
+      each element in the array (from left to right) to reduce it to a
+      single value.
+    */
+    return this.text.reduce(function(width, line) {
     return Math.max(width, line.length);
-  }, 0);
-};
-/*
-  minHeight() returns a number indicating the minimum height this
-  cell requires (in lines).
-*/
-TextCell.prototype.minHeight = function() {
-  return this.text.length;
-};
-/*
-  draw(width, height) returns an array of length height, which contains
-  a series of strings that are each width characters wide. This
-  represents the content of the cell.
-*/
-TextCell.prototype.draw = function(width, height) {
-  var result = [0,height].range((i)=>i).map(
-    (i) => {
-      var line = this.text[i] || "";
-      return line + " ".repeat(width - line.length)
-    }
-  );
+    }, 0);
+  }
+
+  /*
+    minHeight() returns a number indicating the minimum height this
+    cell requires (in lines).
+  */
+  minHeight () {
+    return this.text.length;
+  }
+
+  /*
+    draw(width, height) returns an array of length height, which contains
+    a series of strings that are each width characters wide. This
+    represents the content of the cell.
+  */
+  draw (width, height) {
+    var result = [0,height].range((i)=>i).map(
+      (i) => {
+        var line = this.text[i] || "";
+        return line + " ".repeat(width - line.length)
+      }
+    )
   /*
   var result = [];
   for (var i = 0; i < height; i++) {
@@ -42,7 +46,8 @@ TextCell.prototype.draw = function(width, height) {
     result.push(line + " ".repeat(width - line.length));
   }
   */
-  return result;
-};
+    return result;
+  }
 
 // End TextCell
+}
